@@ -13,6 +13,8 @@ from amulet_nbt import TAG_String, TAG_Int
 from amulet.api.block_entity import BlockEntity
 
 level = amulet.load_level("level")
+level.platform("java")
+
 
 nether = {}
 b = {}
@@ -29,7 +31,11 @@ def bigBang():
                     for y in range(0, 64):
                         (u_b_1, u_b_e_1, u_e_1,
                         ) = level.translation_manager.get_version("java", (1, 17, 1)).block.to_universal(random.choice(b))
-                        
+                        block_id = level.block_palette.get_add_block(u_b_1)
+                        chunk.blocks[a, y, s] = u_b_1
+
+
+
                         
             chunk.changed = True    
 
